@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+type TaskDataSubTasks {
+  description String
+  status      String
+}
+
+type UserDataCanvasCourses {
+  average_completion_time BigInt
+  course_grade            Float
+  course_id               String
+  passing_grade           Float
+}
+
+type UserDataSettings {
+  notifications Boolean
+  theme         String
+}
+
+type UserDataUserStats {
+  average_completion_time BigInt
+  average_grade           Float
+  total_tasks_completed   Int
+}
+
+model assignment_data {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  course_id   String
+  description String
+  due_date    BigInt
+  title       String
+  user        String
+  weight      Int
+}
+
+model personal_data {
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  completion_date BigInt
+  creation_date   BigInt
+  description     String
+  expiration_date BigInt
+  gpt_plan        String
+  link            String
+  priority        BigInt
+  progress        BigInt
+  start_date      BigInt
+  title           String
+  user            String
+}
+
+model sessions {
+  id      String   @id @map("_id")
+  expires DateTime @db.Date
+  session String
+
+  @@index([expires], map: "expires_1")
+}
+
+model task_data {
+  id                        String             @id @default(auto()) @map("_id") @db.ObjectId
+  course_id                 String
+  created_at                String
+  description               String
+  due_date                  BigInt
+  estimated_completion_time Int
+  running_time              Int
+  completion_time           Int
+  priority                  Float
+  status                    String
+  sub_tasks                 TaskDataSubTasks[]
+  title                     String
+  user_id                   String
+  weight                    Float
+}
+
+model user_data {
+  id               String                  @id @map("_id")
+  canvas_api_token String
+  canvas_courses   UserDataCanvasCourses[]
+  settings         UserDataSettings
+  user_stats       UserDataUserStats
+  username         String
+}

@@ -1,0 +1,82 @@
+{
+    "tasks": {
+        "1": {
+            "id": 1,
+            "title": "CS4104",
+            "description": "Useless description 1",
+            "subTasks": ["A sub task"],
+            "taskID": "asdfbaetrbatba",
+            "courseID": "Fuck You 101",
+            "estimatedCompletionTime": 69,
+            "status": "to-do"
+        },
+        "2": {
+            "id": 2,
+            "title": "CS4804",
+            "description": "Useless description 2",
+            "subTasks": ["A sub task"],
+            "taskID": "asdfbaetrbatba",
+            "courseID": "Fuck You 101",
+            "estimatedCompletionTime": 69,
+            "status": "to-do"
+        },
+        "3": {
+            "id": 3,
+            "title": "CS3114",
+            "description": "Useless description 3",
+            "subTasks": ["A sub task"],
+            "taskID": "asdfbaetrbatba",
+            "courseID": "Fuck You 101",
+            "estimatedCompletionTime": 69,
+            "status": "to-do"
+        },
+        "4": {
+            "id": 4,
+            "title": "CS3104",
+            "description": "Useless description 4",
+            "subTasks": ["A sub task"],
+            "taskID": "asdfbaetrbatba",
+            "courseID": "Fuck You 101",
+            "estimatedCompletionTime": 69,
+            "status": "to-do"
+        },
+        "5": {
+            "id": 5,
+            "title": "OMG THIS ACTUALLY WORKED",
+            "description": "Useless description 5",
+            "subTasks": ["A sub task"],
+            "taskID": "asdfbaetrbatba",
+            "courseID": "Fuck You 101",
+            "estimatedCompletionTime": 69,
+            "status": "to-do"
+        },
+        "6": {
+            "id": 6,
+            "title": "NOW LET'S ADD A HEADER",
+            "description": "Useless description 6",
+            "subTasks": ["A sub task", "Another one"],
+            "taskID": "asdfbaetrbatba",
+            "courseID": "Fuck You 101",
+            "estimatedCompletionTime": 69,
+            "status": "to-do"
+        }
+    },
+    "columns": {
+        "column-1": {
+            "id": "column-1",
+            "title": "TO-DO",
+            "taskIds": [1, 2, 3, 4, 5, 6]
+        },
+        "column-2": {
+            "id": "column-2",
+            "title": "IN-PROGRESS",
+            "taskIds": []
+        },
+        "column-3": {
+            "id": "column-3",
+            "title": "COMPLETED",
+            "taskIds": []
+        }
+    },
+    "columnOrder": ["column-1", "column-2", "column-3"]
+}

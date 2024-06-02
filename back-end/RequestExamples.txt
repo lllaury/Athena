@@ -1,0 +1,56 @@
+*** IMPORTANT: MAKE SURE YOUR HOST IS CORRECT ***
+
+
+Fetch tasks for active user: 
+curl -b cookies.txt http://localhost:5000/api/user/tasks
+
+Update task status:
+curl -b cookies.txt -X POST http://localhost:5000/api/task/update-status -H "Content-Type: application/json" -d '{"task_id": "661c321023c1939279874d15", "new_status": "completed"}'
+
+Generate tasks from all assignments:
+curl -b cookies.txt http://localhost:5000/api/db/import/all-assignments
+
+Generate task for active user:
+curl -b cookies.txt -X POST http://localhost:5000/api/task/generate -H "Content-Type: application/json" -d '{"title": "Essay Assignment", "details": "Write a 2000-word essay on the impact of climate change", "dueDate": "2023-05-15", "course_id": "climate101", "weight": 10}'
+curl -b cookies.txt -X POST http://localhost:3000/api/task/generate -H "Content-Type: application/json" -d '{"title": "Final take home quiz", "details": "Write a 2000-word essay on the impact of climate change", "dueDate": 1712786963000, "course_id": "climate101", "weight": 10}'
+
+Set active user:
+curl -c cookies.txt -X POST http://localhost:5000/api/user/set-user -H "Content-Type: application/json" -d '{"user_id": "giol"}'
+
+Give prompt to GPT:
+curl -X POST http://localhost:5000/api/gpt -H "Content-Type: application/json" -d '{"prompt": "Tell me a joke"}'
+
+Update Priorities (First is how to update one user, second is to update all):
+curl -b cookies.txt -X POST http://localhost:5000/api/task/update-priorities -H "Content-Type: application/json" -d '{"user_id": "giol"}'
+curl -b cookies.txt -X POST http://localhost:5000/api/task/update-priorities
+
+
+How to delete task: (the id is the object id of the task document in Mongo)
+curl -X POST http://localhost:5000/api/task/delete-task -H "Content-Type: application/json" -d '{"id": "661d723231974f226d6da4fd"}'
+
+To create a new user with all empty or default values
+curl -X POST http://localhost:3000/api/user/set-user -H "Content-Type: application/json" -d '{"user_id": "your_user_id"}'
+
+
+To create a new user with custom values
+    curl -X POST http://localhost:3000/api/user/set-user -H "Content-Type: application/json" -d 
+     '{"user_id": "your_user_id", 
+       "username": "your_username", 
+      "canvas_courses": [{"course_id": "your_course_id", "course_grade": current_grade_float, "passing_grade": grade_float, "average_completion_time": BigInt_seconds}],
+      "settings": {"notifications": boolean, "theme": "light_or_dark"},
+      "user_stats": {"average_completion_time": BigInt_Seconds, "average_grade": grade_float, "total_tasks_completed": int},
+      "canvas_api_token": "NA"
+      }'
+
+    '{"user_id": "josh_test2", "username": "josh_test@aol.com", "canvas_courses": [{"course_id": "math101", "course_grade": 94.5, "passing_grade": 70.0, "average_completion_time": 1500}], "settings": {"notifications": false, "theme": "dark"}, "user_stats": {"average_completion_time": 2000, "average_grade": 90.1, "total_tasks_completed": 25}, "canvas_api_token": "NA"}'
+
+
+
+How to update user
+curl -X POST http://localhost:5000/api/user/update-user -H "Content-Type: application/json" -d '{"user_id": "bob_test", "username": "newBobUser123"}'
+
+
+
+How to delete user
+curl -X POST http://localhost:5000/api/user/delete-user -H "Content-Type: application/json" -d '{"user_id": "bob_test"}'
+
